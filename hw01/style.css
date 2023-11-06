@@ -1,0 +1,20 @@
+li {
+  cursor: pointer;
+  padding: 10px 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+li:nth-child(2n) {
+  background-color: #ccc;
+}
+
+li:nth-child(2n+1) {
+  background-color: #eee;
+}
+
+ul {
+  max-width: max-content;
+}

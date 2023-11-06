@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./script.js" defer></script>
+    <title>Vue.js HomeWork #01</title>
+  </head>
+  <body>
+    <div id="p2tasks">
+      <button @click="buttonReverse">{{ revButtonMessage }}</button>
+      <hr>
+      <button @click="addElemToList">{{ addElemToListButtonMessage }}</button>
+      <ul>
+        <li v-for="elem in elemList" :key="elem.id" @click="removeElemFromList(elem.id)">{{ `${elem.text} #${elem.id}` }}</li>
+      </ul>
+    </div>
+  </body>
+</html>
