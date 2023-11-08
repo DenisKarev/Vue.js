@@ -1,0 +1,35 @@
+li {
+  list-style-type: none;
+  padding: 10px 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+li:nth-child(2n) {
+  background-color: #ccc;
+}
+
+li:nth-child(2n+1) {
+  background-color: #eee;
+}
+
+ul {
+  max-width: 700px;
+}
+
+.product-card {
+  display: flex;
+}
+.product-card__pic {
+  display: block;
+  border: 1px solid grey;
+}
+.product-card__txtcontainer {
+  padding-left: 10px;
+}
+.product-card__title-price {
+  display: flex;
+  justify-content: space-between;
+}
