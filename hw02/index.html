@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./script.js" defer></script>
+    <title>Vue.js HomeWork #02</title>
+  </head>
+  <body>
+    <div id="p2tasks">
+      <p>{{ butonsDescriptionMessage }}</p>
+      <div class="buttons" style="display: flex;">
+        <button @click="buttonHighLow" >{{ buttonHighLowMessage }}</button>
+        <button @click="buttonLowHigh">{{ buttonLowHighMessage }}</button>
+        <button @click="buttonUns">{{ buttonUnsMessage }}</button>
+      </div>
+      <ul>
+        <li v-for="prod in getProducts" :key="prod.id">
+          <div class="product-card">
+            <img :src="prod.pic" alt="prod.title" class="product-card__pic">
+            <div class="product-card__txtcontainer">
+              <div class="product-card__title-price">
+                <h3 class="product-card__title">{{prod.title}}</h3>
+                <h2 class="product-card__price">{{prod.price}} ¥</h2>
+              </div>
+              <div class="product-card__description">{{prod.description}}</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <script type="text/x-template" id="productCardTemplate" inline-template>
+      <div class="product-card">
+        <div class="product-card__title">{{prod.title}}</div>
+          <div class="product-card__description">{{prod.description}}</div>
+      </div>
+    </script> -->
+  </body>
+</html>
