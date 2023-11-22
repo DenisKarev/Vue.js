@@ -1,0 +1,7 @@
+<svg height="0" width="0">
+    <defs>
+        <clipPath id="banner-clip-path">
+            <path d="M0 70C0 31.3401 31.3401 0 70 0H1131C1169.66 0 1201 31.3401 1201 70V688C1201 726.66 1169.66 758 1131 758H70C31.3401 758 0 726.66 0 688V70Z" fill="#F4F0EC"/>
+        </clipPath>
+    </defs>
+</svg>
