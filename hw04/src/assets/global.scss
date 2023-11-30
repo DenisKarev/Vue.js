@@ -192,15 +192,21 @@ li {
         align-items: flex-end;
         justify-content: center;
 
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background-image: url('/public/img/banner-blog.png');
-        background-repeat: no-repeat;
-        background-position: bottom center;
-        background-size: cover;
+        // position: absolute;
+        // height: 100%;
+        // width: 100%;
+        // background-image: url('/public/img/banner-blog.png');
+        // background-repeat: no-repeat;
+        // background-position: bottom center;
+        // background-size: cover;
 
-        &-back-pic {}
+        &-back-pic {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-position: bottom center;
+            object-fit: cover;
+        }
 
         &-content {
             display: flex;
@@ -222,13 +228,21 @@ li {
     height: 356px;
 
     &-container {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background-image: url('/public/img/banner-blog-details.png');
-        background-repeat: no-repeat;
-        background-position: bottom center;
-        background-size: cover;
+        // position: absolute;
+        // height: 100%;
+        // width: 100%;
+        // background-image: url('/public/img/banner-blog-details.png');
+        // background-repeat: no-repeat;
+        // background-position: bottom center;
+        // background-size: cover;
+
+        &-back-pic {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-position: bottom center;
+            object-fit: cover;
+        }
     }
 }
 
@@ -647,107 +661,6 @@ li {
     }
 }
 
-
-.footer {
-    min-height: 272px;
-    padding-bottom: 120px;
-
-    &-container {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &-logo-and-links {
-        width: 393px;
-    }
-
-    &-about-text {}
-
-    &-home {
-        font-size: 40px;
-        font-family: 'DM Serif Display', serif;
-        padding-bottom: 32px;
-
-        &-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 18px;
-
-            &:hover {
-                &>svg>path {
-                    fill: $primary2-color;
-                }
-            }
-        }
-
-        &-title {}
-    }
-
-    &-social-media {
-        display: flex;
-        gap: 54px;
-
-        &-twitter {
-            &:hover {
-                & path {
-                    fill: $primary1-color;
-                }
-            }
-        }
-
-        &-linkedin {
-            &:hover {
-                & path {
-                    fill: $primary1-color;
-                }
-            }
-        }
-    }
-
-    &-pages {
-        width: 125px;
-
-        &-title {
-            padding-bottom: 24px;
-        }
-
-        &-links {
-            display: flex;
-            flex-direction: column;
-
-        }
-
-        &-link {
-            line-height: 300%;
-
-            &-item {}
-        }
-    }
-
-    &-services {
-        width: 120px;
-    }
-
-    &-contact {
-        width: 258px;
-
-        &-title {
-            padding-bottom: 24px;
-        }
-
-        &-texta {
-            min-width: 258px;
-        }
-
-        &-textpm {
-            min-width: 258px;
-            line-height: 300%;
-        }
-    }
-
-    &-copyright {}
-}
 
 .buttontype1hover {
     cursor: pointer;
