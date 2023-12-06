@@ -2,7 +2,7 @@
     <div class="projects center-bg">
         <ProjectsSelector @selectorChanged="data => selectedProj = data" :current="selectedProj" />
 
-        <ProjectsList :showProjects="selectedProjects" />
+        <ProjectsList :showProjects="selectedProjects" @projectSelectClick="pid => projectSelectClick(pid)"/>
 
         <div class="blog-list-pagination">
             <div class="blog-list-pagination-container">
@@ -54,11 +54,13 @@ export default {
     methods: {
         selectorChanged(selected) {
             this.selectedProj = selected;
+        },
+        projectSelectClick(pid) {
+            this.$emit('projectSelectClick', pid);
         }
     },
     computed: {
         selectedProjects() {
-            console.log(this.listProjects);
             return this.listProjects.filter((project) => project.projectTag === this.selectedProj);
         }
     },

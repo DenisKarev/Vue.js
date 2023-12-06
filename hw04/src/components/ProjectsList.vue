@@ -1,7 +1,7 @@
 <template>
     <div class="projects-list">
         <div class="projects-list-container">
-            <ProjectShow v-for="item in showProjects" :key="item.id" :project="item" />
+            <ProjectShow v-for="item in showProjects" :key="item.id" :project="item" @projectSelectClick="pid => projectSelectClick(pid)"/>
         </div>
     </div>
 </template>
@@ -17,7 +17,11 @@ export default {
     data() {
         return {};
     },
-    methods: {},
+    methods: {
+        projectSelectClick(pid) {
+            this.$emit('projectSelectClick', pid);
+        }
+    },
     computed: {},
     components: {
         ProjectShow
