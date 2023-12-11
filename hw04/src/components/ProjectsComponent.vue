@@ -1,73 +1,68 @@
 <template>
     <div class="projects center-bg">
-        <ProjectsSelector @selectorChanged="data => selectedProj = data" :current="selectedProj" />
+        <ProjectsSelector @selectorChanged="data => selectorChanged(data)" :current="selectedProj" />
 
-        <ProjectsList :showProjects="selectedProjects" @projectSelectClick="pid => projectSelectClick(pid)"/>
+        <ProjectsList :showProjects="paginatedProjects" />
 
-        <div class="blog-list-pagination">
-            <div class="blog-list-pagination-container">
-                <div class="blog-list-pagination-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none"
-                        class="blog-list-pagination-button">
-                        <circle cx="26" cy="26" r="25.5" fill="#F4F0EC" />
-                    </svg>
-                </div>
-                <div class="blog-list-pagination-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none"
-                        class="blog-list-pagination-button">
-                        <circle cx="26" cy="26" r="25.5" stroke="#CDA274" />
-                    </svg>
-                </div>
-                <div class="blog-list-pagination-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none"
-                        class="blog-list-pagination-button">
-                        <circle cx="26" cy="26" r="25.5" stroke="#CDA274" />
-                    </svg>
-                </div>
-                <div class="blog-list-pagination-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none"
-                        class="blog-list-pagination-button">
-                        <circle cx="26" cy="26" r="25.5" stroke="#CDA274" />
-                        <path d="M23.5571 32L29.5 25.3143L23.5571 18.6286" stroke="#292F36" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </div>
-            </div>
-        </div>
+        <PaginationComponent :current="currentPage" :max="totalPages" />
+
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import ProjectsSelector from './ProjectsSelector.vue'
 import ProjectsList from './ProjectsList.vue'
+import PaginationComponent from './PaginationComponent.vue'
 
 export default {
     name: 'ProjectsComponent',
-    props: {
-        listProjects: Array
-    },
     data() {
         return {
-            selectedProj: 'Bedroom'
+            selectedProj: 'Bedroom',
+            projectsPerPage: 6
         }
     },
     methods: {
         selectorChanged(selected) {
             this.selectedProj = selected;
+            // console.log(this.$route.params.page);
+            if (this.$route.params.page) {
+                this.$router.push('/'+this.$route.name)
+            }
         },
-        projectSelectClick(pid) {
-            this.$emit('projectSelectClick', pid);
-        }
     },
     computed: {
+        ...mapGetters(['projectArticles']),
         selectedProjects() {
-            return this.listProjects.filter((project) => project.projectTag === this.selectedProj);
-        }
+            const selected = this.projectArticles.filter((project) => project.projectTag === this.selectedProj);
+            const odd = selected.filter((project) => +project.projectid % 2);
+            const even = selected.filter((project) => !(+project.projectid % 2));
+            return [...odd, ...even];
+        },
+        totalPages() {
+            return Math.ceil(this.selectedProjects.length / this.projectsPerPage);
+        },
+        paginatedProjects() {
+            const startIndex = (this.currentPage - 1) * this.projectsPerPage;
+            const endIndex = startIndex + this.projectsPerPage;
+            return this.selectedProjects.slice(startIndex, endIndex);
+        },
+        currentPage() {
+            const page = this.$route.params.page;
+            return +page || 1;
+        },
     },
     components: {
         ProjectsSelector,
         ProjectsList,
-    }
+        PaginationComponent
+    },
+    mounted() {
+        if (this.$route.params.page > this.totalPages) {
+            this.$router.replace({ name: '404' })
+        }
+    },
 }
 </script>
 

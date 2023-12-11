@@ -68,8 +68,8 @@ export default {
 
         &:hover {
             border-radius: 18px;
-            background-color: var(--pri3);
-            color: var(--pri2);
+            background-color: var(--pri2);
+            color: var(--pri3);
             cursor: pointer;
         }
     }

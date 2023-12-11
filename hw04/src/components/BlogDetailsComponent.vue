@@ -34,11 +34,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'BlogDetailsComponent',
-  props: {
-    detailArticles: Array
-  },
   data() {
     return {
       blogFilters: ['Kitchen', 'Bedroom', 'Building', 'Architecture', 'Kitchen Planning', 'Kitchen Design', 'Living Design', 'Interior Design'],
@@ -52,8 +50,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['blogArticles']),
     filteredBlogs() {
-      const filtered = [...this.detailArticles].filter((blog) => blog.articleTag === this.activeFilter)
+      const filtered = this.blogArticles.filter((blog) => blog.articleTag === this.activeFilter)
       if (filtered.length === 0) {
         return [{ articleTitle: 'No blogs matching filter criteria' }]
       }
@@ -63,4 +62,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

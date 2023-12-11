@@ -29,10 +29,10 @@ export default {
     data() {
         return {
             images: {
-                'blog': '/img/banner-blog.png',
-                'blog-details': '/img/banner-blog-details.png',
-                'projects': '/img/banner-projects.png',
-                'project-details': '/img/banner-project-details.png',
+                'blog': '/img/banner-blog.jpg',
+                'blog-details': '/img/banner-blog-details.jpg',
+                'projects': '/img/banner-projects.jpg',
+                'project-details': '/img/banner-project-details.jpg',
              }
         }
     },
@@ -67,6 +67,7 @@ export default {
         }
 
         &-content {
+            min-width: 504px;;
             display: flex;
             flex-direction: column;
             align-items: center;

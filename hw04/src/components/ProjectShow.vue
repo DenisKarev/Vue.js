@@ -1,7 +1,7 @@
 <template>
     <div class="project-component">
         <div class="project-component-contents">
-            <img :src="project.pictureUrl" alt="project.pictureAlt">
+            <img :src="project.pictureUrl" :alt="project.pictureAlt">
             <div class="project-component-wrapper">
                 <div class="project-component-texts">
                     <h4 class="project-component-title">{{ project.projectSmallTitle }}</h4>
@@ -11,12 +11,14 @@
                         </span>
                     </p>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none"
-                    class="buttontype1hover" @click="projectSelectClick(project.projectid)">
-                    <circle cx="26" cy="26.2671" r="26" fill="#F4F0EC" />
-                    <path d="M23.7715 32.9529L29.7144 26.2672L23.7715 19.5815" stroke="#292F36" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                <router-link :to="{ name: 'projectdetails', params: { pid: project.projectid } }">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none"
+                        class="buttontype1hover">
+                        <circle cx="26" cy="26.2671" r="26" fill="#F4F0EC" />
+                        <path d="M23.7715 32.9529L29.7144 26.2672L23.7715 19.5815" stroke="#292F36" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </router-link>
             </div>
         </div>
     </div>
@@ -27,15 +29,7 @@ export default {
     name: "ProjectShow",
     props: {
         project: Object
-    },
-    data() {
-        return {}
-    },
-    methods: {
-        projectSelectClick(pid) {
-            this.$emit('projectSelectClick', parseInt(pid));
-        }
-    },
+    }
 }
 </script>
 

@@ -1,6 +1,6 @@
 $primary1-color: #CDA274;
-$primary3-color: #F4F0EC;
 $primary2-color: #292F36;
+$primary3-color: #F4F0EC;
 
 
 * {
@@ -116,6 +116,8 @@ li {
             align-items: center;
 
             &:hover {
+                // text-shadow: 2px 2px 2px var(--pri1);
+                color: var(--pri1);
                 &>svg>path {
                     fill: $primary2-color;
                 }
@@ -129,6 +131,13 @@ li {
         gap: 40px;
         font-size: 20px;
         font-family: 'Jost', sans-serif;
+
+        &-item {
+            padding: 4px;
+            &:hover > a{
+                color: var(--pri1);
+            }
+        }
     }
 }
 
@@ -246,64 +255,6 @@ li {
     }
 }
 
-.project {
-    &-container {}
-
-    &-contents {
-        text-align: center;
-        max-width: 737px;
-        flex-direction: column;
-        padding-top: 96px;
-        padding-bottom: 92px;
-
-        &-header {
-            padding-bottom: 8px;
-        }
-
-        &-paragraph {}
-    }
-
-    &-project-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 56px;
-        justify-content: space-between;
-        padding-bottom: 96px;
-    }
-
-    &-project {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-
-        &-description {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        &-title {}
-
-        &-text {}
-
-    }
-}
-
-.pr01 {
-    border-radius: 80px 0px 0px 0px;
-}
-
-.pr02 {
-    border-radius: 0px 80px 0px 0px;
-}
-
-.pr03 {
-    border-radius: 0px 0px 80px 0px;
-}
-
-.pr04 {
-    border-radius: 0px 0px 0px 80px;
-}
 
 .counter {
     min-height: 457px;
@@ -640,7 +591,7 @@ li {
                 gap: 10px;
 
                 &>.active {
-                    background-color: $primary2-color;
+                    background-color: var(--pri2);
                     color: white;
                 }
 
@@ -648,12 +599,12 @@ li {
                     display: inline-block;
                     font-size: 18px;
                     padding: 9px 30px;
-                    background-color: $primary3-color;
+                    background-color: var(--pri3);
                     border-radius: 10px;
                     cursor: pointer;
 
                     &:hover {
-                        background-color: $primary1-color;
+                        background-color: var(--pri1);
                     }
                 }
             }
@@ -663,23 +614,33 @@ li {
 
 
 .buttontype1hover {
-    cursor: pointer;
-
     &:hover {
         & circle {
-            fill: $primary2-color;
+            fill: var(--pri2);
         }
 
         & path {
-            stroke: $primary1-color;
+            stroke: var(--pri1);
         }
     }
 }
 
 .buttontype2 {
-    background-color: $primary2-color;
+    background-color: var(--pri2);
     border-radius: 18px;
     padding: 26px 48px;
     max-width: max-content;
     cursor: pointer;
+
+    &:hover {
+        background-color: var(--pri1);
+
+        &>p {
+            color: var(--pri2);
+        }
+
+        &>svg>path {
+            stroke: var(--pri3);
+        }
+    }
 }

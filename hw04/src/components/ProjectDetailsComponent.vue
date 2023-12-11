@@ -1,16 +1,18 @@
 <template>
-    <div class="project-details center-bg">
+    <div v-if="pid && loadedProject.projectDetailPics" class="project-details center-bg">
+        <!-- <div class="project-details center-bg"> -->
         <div class="project-details-container">
             <div class="project-details-content">
                 <div class="project-details-texts">
-                    <h1 class="project-details-title"> <span>{{ project.projectid }}</span> {{ project.projectTitle }}</h1>
-                    <p class="project-details-text" v-for="(text, index) in project.projectText" :key="index">{{ text
+                    <h1 class="project-details-title"> <span>{{ loadedProject.projectid }}</span> {{
+                        loadedProject.projectTitle }}</h1>
+                    <p class="project-details-text" v-for="(text, index) in loadedProject.projectText" :key="index">{{ text
                     }}</p>
                 </div>
             </div>
         </div>
         <div class="project-details-pictures">
-            <img class="project-details-pic" :src="currentPic" :alt="project.pictureAlt">
+            <img class="project-details-pic" :src="currentPic" :alt="loadedProject.pictureAlt">
             <div class="sw-left" @click="currentimage--"></div>
             <div class="sw-right" @click="currentimage++"></div>
             <svg class="project-details-pic-zoom" xmlns="http://www.w3.org/2000/svg" width="172" height="172"
@@ -39,9 +41,9 @@
             </svg>
         </div>
         <div class="project-details-pic-dots-container">
-            <svg v-for="item in project.projectDetailPics.length" :key="item" class="project-details-pic-dots"
-                @click="currentimage = --item" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                viewBox="0 0 20 20" fill="none">
+            <svg v-for="item in loadedProject.projectDetailPics.length" :key="item" class="project-details-pic-dots"
+                @click="currentimage = --item" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                fill="none">
                 <g>
                     <circle cx="10" cy="10" r="8" fill="white" stroke="black" stroke-width="2.5px" />
                 </g>
@@ -64,25 +66,37 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: "ProjectDetailsComponent",
     props: {
-        project: Object
+        pid: Number
     },
     data() {
         return {
             currentimage: 0,
         }
     },
-    methods: {},
     computed: {
+        ...mapGetters(['projectById', 'projectsCount']),
         currentPic() {
-            return this.project.projectDetailPics[this.imageSelected];
+            if (this.pid && this.loadedProject.projectDetailPics) {
+                return this.loadedProject.projectDetailPics[this.imageSelected];
+            } else return 0;
         },
         imageSelected() {
-            // console.log(`currentimage ${this.currentimage}`);
-            // console.log(`imageselected ${Math.abs(this.currentimage % (this.project.projectDetailPics.length))}`);
-            return Math.abs(this.currentimage % (this.project.projectDetailPics.length));
+            if (this.pid && this.loadedProject.projectDetailPics) {
+                return Math.abs(this.currentimage % (this.loadedProject.projectDetailPics.length));
+            } else return 0;
+        },
+        loadedProject() {
+            return this.projectById(this.pid)
+        }
+    },
+    mounted() {
+        // console.log(this.$route.params.pid);
+        if (this.$route.params.pid > this.projectsCount) {
+            this.$router.replace({ name: '404'})
         }
     }
 }
