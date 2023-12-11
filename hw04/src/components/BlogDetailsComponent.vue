@@ -4,7 +4,6 @@
       <div class="blog-details-blogs">
         <div class="blog-details-blog" v-for="(blog) in filteredBlogs" :key="blog.artcleid">
           <h1 class="blog-details-blog-header">{{ blog.articleTitle }}</h1>
-          <!-- <img src='../assets/img/article01pic.png'   alt="123"> -->
           <img v-if="blog.pictureUrl" :src="blog.pictureUrl" :alt="blog.pictureAlt" class="blog-details-blog-image" />
           <div v-if="blog.pictureUrl" class="blog-details-blog-dateandtags">
             <p>{{ blog.articleDate }}</p>
@@ -35,11 +34,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'BlogDetailsComponent',
-  props: {
-    detailArticles: Array
-  },
   data() {
     return {
       blogFilters: ['Kitchen', 'Bedroom', 'Building', 'Architecture', 'Kitchen Planning', 'Kitchen Design', 'Living Design', 'Interior Design'],
@@ -53,8 +50,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['blogArticles']),
     filteredBlogs() {
-      const filtered = [...this.detailArticles].filter((blog) => blog.articleTag === this.activeFilter)
+      const filtered = this.blogArticles.filter((blog) => blog.articleTag === this.activeFilter)
       if (filtered.length === 0) {
         return [{ articleTitle: 'No blogs matching filter criteria' }]
       }
@@ -64,4 +62,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

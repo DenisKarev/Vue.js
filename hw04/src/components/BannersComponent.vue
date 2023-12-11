@@ -22,13 +22,18 @@ export default {
             type: String,
             require: true,
             validator: function (value) {
-                return 'blog blog-details '.includes(value)
+                return 'blog blog-details projects project-details'.includes(value)
             }
         }
     },
     data() {
         return {
-            images: { 'blog': '/img/banner-blog.png', 'blog-details': '/img/banner-blog-details.png' }
+            images: {
+                'blog': '/img/banner-blog.jpg',
+                'blog-details': '/img/banner-blog-details.jpg',
+                'projects': '/img/banner-projects.jpg',
+                'project-details': '/img/banner-project-details.jpg',
+             }
         }
     },
     computed: {
@@ -62,6 +67,7 @@ export default {
         }
 
         &-content {
+            min-width: 504px;;
             display: flex;
             flex-direction: column;
             align-items: center;
