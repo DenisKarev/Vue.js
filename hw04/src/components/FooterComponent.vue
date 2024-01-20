@@ -58,13 +58,10 @@
 <script>
 export default {
     name: 'FooterComponent',
-
 }
 </script>
 
 <style lang="scss">
-@import '@/assets/vars';
-
 .footer {
     min-height: 272px;
     padding-bottom: 120px;
@@ -78,7 +75,7 @@ export default {
         width: 393px;
     }
 
-    &-about-text {}
+    // &-about-text {}
 
     &-home {
         font-size: 40px;
@@ -93,12 +90,12 @@ export default {
 
             &:hover {
                 &>svg>path {
-                    fill: $primary2-color;
+                    fill: var(--pri2);
                 }
             }
         }
 
-        &-title {}
+        // &-title {}
     }
 
     &-social-media {
@@ -108,7 +105,7 @@ export default {
         &-twitter {
             &:hover {
                 & path {
-                    fill: $primary1-color;
+                    fill: var(--pri1);
                 }
             }
         }
@@ -116,7 +113,7 @@ export default {
         &-linkedin {
             &:hover {
                 & path {
-                    fill: $primary1-color;
+                    fill: var(--pri1);
                 }
             }
         }
@@ -138,7 +135,7 @@ export default {
         &-link {
             line-height: 300%;
 
-            &-item {}
+            // &-item {}
         }
     }
 
@@ -174,6 +171,6 @@ export default {
         }
     }
 
-    &-copyright {}
+    // &-copyright {}
 }
 </style>

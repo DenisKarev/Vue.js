@@ -22,13 +22,18 @@ export default {
             type: String,
             require: true,
             validator: function (value) {
-                return 'blog blog-details '.includes(value)
+                return 'blog blog-details projects project-details'.includes(value)
             }
         }
     },
     data() {
         return {
-            images: { 'blog': '/img/banner-blog.png', 'blog-details': '/img/banner-blog-details.png' }
+            images: {
+                'blog': '/img/banner-blog.png',
+                'blog-details': '/img/banner-blog-details.png',
+                'projects': '/img/banner-projects.png',
+                'project-details': '/img/banner-project-details.png',
+             }
         }
     },
     computed: {

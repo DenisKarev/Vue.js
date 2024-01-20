@@ -1,15 +1,37 @@
 <template>
   <div id="app">
+    <div class="app-selector">
+      <div class="app-selector-box">
+        <label for="blog"> blog
+          <input type="checkbox" id="blog" name="selectpage" v-model="components2Show.blog">
+        </label>
+        <label for="blogdetails"> blog-details
+          <input type="checkbox" id="blogdetails" name="selectpage" v-model="components2Show.blogdetails">
+        </label>
+        <label for="projects"> projects
+          <input type="checkbox" id="projects" name="selectpage" v-model="components2Show.projects">
+        </label>
+        <label for="projectdetails"> project-details
+          <input type="checkbox" id="projectdetails" name="selectpage" v-model="components2Show.projectdetails">
+        </label>
+      </div>
+    </div>
 
     <HeaderAndNavComponent />
-    
-    <BannersComponent :texts="{ h: 'Articles & News', p: 'Home / Blog' }" :breadcrumbs="true" target="blog" />
 
-    <BlogListComponent :listArtiles="blogArticles" />
+    <BannersComponent v-if="components2Show.blog" :texts="{ h: 'Articles & News', p: 'Home / Blog' }" :breadcrumbs="true" target="blog" />
+    <BlogListComponent v-if="components2Show.blog" :listArtiles="blogArticles" />
 
-    <BannersComponent :breadcrumbs="false" target="blog-details" />
 
-    <BlogDetailsComponent :detailArticles="blogArticles" />
+    <BannersComponent v-if="components2Show.blogdetails" :breadcrumbs="false" target="blog-details" />
+    <BlogDetailsComponent v-if="components2Show.blogdetails" :detailArticles="blogArticles" />
+
+
+    <BannersComponent v-if="components2Show.projects" :texts="{ h: 'Our Project', p: 'Home / Project' }" :breadcrumbs="true" target="projects" />
+    <ProjectsComponent v-if="components2Show.projects" :listProjects="projectArticles" @projectSelectClick="pid => projectSelectClick(pid)" />
+
+    <BannersComponent v-if="components2Show.projectdetails" :breadcrumbs="false" target="project-details" />
+    <ProjectDetailsComponent v-if="components2Show.projectdetails" :project="projectDetails" />
 
     <FooterComponent />
 
@@ -17,85 +39,54 @@
 </template>
 
 <script>
-import BlogListComponent from './components/BlogListComponent.vue';
-import BlogDetailsComponent from './components/BlogDetailsComponent.vue'
-import BannersComponent from './components/BannersComponent.vue';
-import FooterComponent from './components/FooterComponent.vue';
+import { mapActions, mapGetters } from 'vuex';
+
 import HeaderAndNavComponent from './components/HeaderAndNavComponent.vue';
+import FooterComponent from './components/FooterComponent.vue';
+import BannersComponent from './components/BannersComponent.vue';
+
+import BlogListComponent from './components/BlogListComponent.vue';
+import BlogDetailsComponent from './components/BlogDetailsComponent.vue';
+import ProjectsComponent from './components/ProjectsComponent.vue';
+import ProjectDetailsComponent from './components/ProjectDetailsComponent.vue';
 
 export default {
   name: 'App',
   data() {
     return {
-      blogArticles: [
-        {
-          articleid: '01',
-          pictureUrl: './img/article01pic.png',
-          pictureAlt: 'Article number 1 picture',
-          articleTitle: 'Let’s Get Solution For Building Construction Work',
-          articleText: "<b>Lorem ipsum dolor sit amet,</b> adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injecthumour, or randomised words which don't look even slightly believable. Embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
-          articleTag: 'Kitchen Design',
-          articleDate: '26 December, 2022'
-        },
-        {
-          articleid: '02',
-          pictureUrl: './img/article02pic.png',
-          pictureAlt: 'Article number 2 picture',
-          articleTitle: 'Low Cost Latest Invented Interior Designing Ideas.',
-          articleText: "Lorem ipsum dolor sit amet, adipiscing <b>Aliquam</b> eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injecthumour, or randomised words which don't look even slightly believable. Embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
-          articleTag: 'Living Design',
-          articleDate: '22 December, 2022'
-        },
-        {
-          articleid: '03',
-          pictureUrl: './img/article03pic.png',
-          pictureAlt: 'Article number 3 picture',
-          articleTitle: 'Best For Any Office & Business Interior Solution',
-          articleText: "Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injecthumour, or randomised words which don't look even slightly believable. Embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
-          articleTag: 'Interior Design',
-          articleDate: '25 December, 2022'
-        },
-        {
-          articleid: '04',
-          pictureUrl: './img/article04pic.png',
-          pictureAlt: 'Article number 4 picture',
-          articleTitle: 'Let’s Get Solution For Building Construction Work',
-          articleText: "Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injecthumour, or randomised words which don't look even slightly believable. Embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
-          articleTag: 'Kitchen Design',
-          articleDate: '26 December, 2022'
-        },
-        {
-          articleid: '05',
-          pictureUrl: './img/article05pic.png',
-          pictureAlt: 'Article number 5 picture',
-          articleTitle: 'Low Cost Latest Invented Interior Designing Ideas.',
-          articleText: "Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injecthumour, or randomised words which don't look even slightly believable. Embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
-          articleTag: 'Living Design',
-          articleDate: '22 December, 2022'
-        },
-        {
-          articleid: '06',
-          pictureUrl: './img/article06pic.png',
-          pictureAlt: 'Article number 6 picture',
-          articleTitle: 'Best For Any Office & Business Interior Solution',
-          articleText: "Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injecthumour, or randomised words which don't look even slightly believable. Embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
-          articleTag: 'Interior Design',
-          articleDate: '25 December, 2022'
-        }
-      ]
+      projectDetails: null,
+      components2Show: {
+        blog: false,
+        blogdetails: false,
+        projects: true,
+        projectdetails: false
+      },
+
     };
   },
   components: {
-    BlogListComponent,
-    BlogDetailsComponent,
+    HeaderAndNavComponent,
     BannersComponent,
     FooterComponent,
-    HeaderAndNavComponent
+    BlogListComponent,
+    BlogDetailsComponent,
+    ProjectsComponent,
+    ProjectDetailsComponent
   },
   methods: {
-    // changeComponent() {
-    //   this.componentName = 'BlogDetailsComponent'
-    // }
+    ...mapActions(['fetchDataFrom']),
+    projectSelectClick(pid) {
+      this.components2Show.projects = false;
+      this.components2Show.projectdetails = true;
+      // console.log(pid);
+      this.projectDetails = this.projectById(pid);
+    }
+  },
+  computed: {
+    ...mapGetters(['blogArticles', 'projectArticles', 'projectById']),
+  },
+  mounted() {
+    this.fetchDataFrom();
   },
 }
 </script>
@@ -103,4 +94,30 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 @import './assets/global.scss';
-</style>
+
+:root {
+  --pri1: #CDA274;
+  --pri2: #F4F0EC;
+  --pri3: #292F36;
+}
+
+.app-selector {
+  position: relative;
+  font-family: 1;
+
+  &-box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-size: 200%;
+
+    background-color: var(--pri1);
+
+    padding: 8px;
+    border-radius: 16px;
+
+    & input[type=checkbox] {
+      transform: scale(2);
+    }
+  }
+}</style>
