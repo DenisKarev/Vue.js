@@ -12,7 +12,7 @@
         <div class="blog-article-card">
           <div class="blog-article-card-inner">
             <div class="blog-article-card-inner-img">
-              <img src="/Vue.js/img/article01pic.jpg" alt="Article picture" class="blog-article-card-inner-img" />
+              <img src="/img/article01pic.jpg" alt="Article picture" class="blog-article-card-inner-img" />
               <p class="blog-article-card-inner-tag">
                 Kitchen Design
               </p>
@@ -41,7 +41,7 @@
         <div class="blog-article-card">
           <div class="blog-article-card-inner">
             <div class="blog-article-card-inner-img">
-              <img src="/Vue.js/img/article02pic.jpg" alt="Article picture" class="blog-article-card-inner-img" />
+              <img src="/img/article02pic.jpg" alt="Article picture" class="blog-article-card-inner-img" />
               <p class="blog-article-card-inner-tag">
                 Living Design
               </p>
@@ -70,7 +70,7 @@
         <div class="blog-article-card">
           <div class="blog-article-card-inner">
             <div class="blog-article-card-inner-img">
-              <img src="/Vue.js/img/article03pic.jpg" alt="Article picture" class="blog-article-card-inner-img" />
+              <img src="/img/article03pic.jpg" alt="Article picture" class="blog-article-card-inner-img" />
               <p class="blog-article-card-inner-tag">
                 Interior Design
               </p>

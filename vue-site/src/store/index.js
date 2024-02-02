@@ -16,16 +16,20 @@ export default new Vuex.Store({
       return state.projectArticles;
     },
     projectById: (state) => (pid) => {
-      return state.projectArticles.filter((proj)=> parseInt(proj.projectid) === pid)[0] || [];
+      return (
+        state.projectArticles.filter(
+          (proj) => parseInt(proj.projectid) === pid
+        )[0] || []
+      );
     },
     blogsCount(state) {
-      return state.blogArticles.length
+      return state.blogArticles.length;
     },
     projectsCount(state) {
-      return state.projectArticles.length
-    }
+      return state.projectArticles.length;
+    },
   },
-  mutations: {  
+  mutations: {
     SET_ALL_ITEMS(state, payload) {
       state.blogArticles = payload.blogs;
       state.projectArticles = payload.projects;
@@ -35,10 +39,11 @@ export default new Vuex.Store({
     fetchDataFrom(s) {
       setTimeout(() => {
         s.commit("SET_ALL_ITEMS", {
-          blogs: [  // x2 (12)
+          blogs: [
+            // x2 (12)
             {
               articleid: "01",
-              pictureUrl: "/Vue.js/img/article01pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article01pic.jpg`,
               pictureAlt: "Article number 1 picture",
               articleTitle: "Let’s Get Solution For Building Construction Work",
               articleText:
@@ -48,7 +53,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "02",
-              pictureUrl: "/Vue.js/img/article02pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article02pic.jpg`,
               pictureAlt: "Article number 2 picture",
               articleTitle:
                 "Low Cost Latest Invented Interior Designing Ideas.",
@@ -59,7 +64,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "03",
-              pictureUrl: "/Vue.js/img/article03pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article03pic.jpg`,
               pictureAlt: "Article number 3 picture",
               articleTitle: "Best For Any Office & Business Interior Solution",
               articleText:
@@ -69,7 +74,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "04",
-              pictureUrl: "/Vue.js/img/article04pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article04pic.jpg`,
               pictureAlt: "Article number 4 picture",
               articleTitle: "Let’s Get Solution For Building Construction Work",
               articleText:
@@ -79,7 +84,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "05",
-              pictureUrl: "/Vue.js/img/article05pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article05pic.jpg`,
               pictureAlt: "Article number 5 picture",
               articleTitle:
                 "Low Cost Latest Invented Interior Designing Ideas.",
@@ -90,7 +95,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "06",
-              pictureUrl: "/Vue.js/img/article06pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article06pic.jpg`,
               pictureAlt: "Article number 6 picture",
               articleTitle: "Best For Any Office & Business Interior Solution",
               articleText:
@@ -100,7 +105,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "07",
-              pictureUrl: "/Vue.js/img/article01pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article01pic.jpg`,
               pictureAlt: "Article number 1 picture",
               articleTitle: "Let’s Get Solution For Building Construction Work",
               articleText:
@@ -110,7 +115,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "08",
-              pictureUrl: "/Vue.js/img/article02pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article02pic.jpg`,
               pictureAlt: "Article number 2 picture",
               articleTitle:
                 "Low Cost Latest Invented Interior Designing Ideas.",
@@ -121,7 +126,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "09",
-              pictureUrl: "/Vue.js/img/article03pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article03pic.jpg`,
               pictureAlt: "Article number 3 picture",
               articleTitle: "Best For Any Office & Business Interior Solution",
               articleText:
@@ -131,7 +136,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "10",
-              pictureUrl: "/Vue.js/img/article04pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article04pic.jpg`,
               pictureAlt: "Article number 4 picture",
               articleTitle: "Let’s Get Solution For Building Construction Work",
               articleText:
@@ -141,7 +146,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "11",
-              pictureUrl: "/Vue.js/img/article05pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article05pic.jpg`,
               pictureAlt: "Article number 5 picture",
               articleTitle:
                 "Low Cost Latest Invented Interior Designing Ideas.",
@@ -152,7 +157,7 @@ export default new Vuex.Store({
             },
             {
               articleid: "12",
-              pictureUrl: "/Vue.js/img/article06pic.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/article06pic.jpg`,
               pictureAlt: "Article number 6 picture",
               articleTitle: "Best For Any Office & Business Interior Solution",
               articleText:
@@ -161,10 +166,11 @@ export default new Vuex.Store({
               articleDate: "25 December, 2022",
             },
           ],
-          projects: [   // x2  (16)
+          projects: [
+            // x2  (16)
             {
               projectid: "01",
-              pictureUrl: "/Vue.js/img/projects-bedroom-01.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-01.jpg`,
               pictureAlt: "Project number 1 picture",
               projectSmallTitle: "Minimal Bedroom",
               projectTitle: "Minimal Look Bedrooms",
@@ -174,13 +180,17 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               projectDate: "26 December, 2022",
               projectStarred: true,
             },
             {
               projectid: "02",
-              pictureUrl: "/Vue.js/img/projects-bedroom-02.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-02.jpg`,
               pictureAlt: "Project number 2 picture",
               projectSmallTitle: "Minimal Bedroom",
               projectTitle: "Minimal Look Bedrooms",
@@ -190,13 +200,17 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "22 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "03",
-              pictureUrl: "/Vue.js/img/projects-bedroom-03.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-03.jpg`,
               pictureAlt: "Project number 3 picture",
               projectSmallTitle: "Minimal Bedroom",
               projectTitle: "Minimal Look Bedrooms",
@@ -206,13 +220,17 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "25 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "04",
-              pictureUrl: "/Vue.js/img/projects-bedroom-04.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-04.jpg`,
               pictureAlt: "Project number 4 picture",
               projectSmallTitle: "Classic Minimal Bedroom",
               projectTitle: "Classic Minimal Look Bedrooms",
@@ -222,30 +240,37 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "26 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "05",
-              pictureUrl: "/Vue.js/img/projects-bedroom-05.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-05.jpg`,
               pictureAlt: "Project number 5 picture",
               projectSmallTitle: "Minimal Bedroom table",
               projectTitle: "Minimal Look Bedroom Table",
-              projectText:
-              [
+              projectText: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquamsem vitae turpis dignissim maximus. Aliquam sollicitudin tellumassa, vbel maximus purus posuere in. Dojrices gravida dignissim. Praesent at nibh in mi fringilla mattis. Phasellus ut dolor odio. Aenean in the ipsum vel lectus bibendum commodo.",
                 "In nec sem suscipit, convallis leo vitae, lacinia nibh. Cras amet tellus lectus. Vivamus ipsum nunc, mattis quis nibh id, pellentesque arcu. Donec a pellentesque Cras erat enim, gravida non ante vitae,elequis convallis elit, in viverra felis. Donec ultrices tellus vitae iaculisvd porta. Proin tincidunt ligula id purus porttitor.",
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "22 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "06",
-              pictureUrl: "/Vue.js/img/projects-bedroom-06.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-06.jpg`,
               pictureAlt: "Project number 6 picture",
               projectSmallTitle: "System Table",
               projectTitle: "Minimal Look System Table",
@@ -255,47 +280,57 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "25 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "07",
-              pictureUrl: "/Vue.js/img/projects-bedroom-07.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-07.jpg`,
               pictureAlt: "Project number 7 picture",
               projectSmallTitle: "Modern Bedroom",
               projectTitle: "Modern Look Bedrooms",
-              projectText:
-              [
+              projectText: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquamsem vitae turpis dignissim maximus. Aliquam sollicitudin tellumassa, vbel maximus purus posuere in. Dojrices gravida dignissim. Praesent at nibh in mi fringilla mattis. Phasellus ut dolor odio. Aenean in the ipsum vel lectus bibendum commodo.",
                 "In nec sem suscipit, convallis leo vitae, lacinia nibh. Cras amet tellus lectus. Vivamus ipsum nunc, mattis quis nibh id, pellentesque arcu. Donec a pellentesque Cras erat enim, gravida non ante vitae,elequis convallis elit, in viverra felis. Donec ultrices tellus vitae iaculisvd porta. Proin tincidunt ligula id purus porttitor.",
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "25 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "08",
-              pictureUrl: "/Vue.js/img/projects-bedroom-08.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-08.jpg`,
               pictureAlt: "Project number 8 picture",
               projectSmallTitle: "Modern Bedroom",
               projectTitle: "Modern Look Bedrooms",
-              projectText:
-              [
+              projectText: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquamsem vitae turpis dignissim maximus. Aliquam sollicitudin tellumassa, vbel maximus purus posuere in. Dojrices gravida dignissim. Praesent at nibh in mi fringilla mattis. Phasellus ut dolor odio. Aenean in the ipsum vel lectus bibendum commodo.",
                 "In nec sem suscipit, convallis leo vitae, lacinia nibh. Cras amet tellus lectus. Vivamus ipsum nunc, mattis quis nibh id, pellentesque arcu. Donec a pellentesque Cras erat enim, gravida non ante vitae,elequis convallis elit, in viverra felis. Donec ultrices tellus vitae iaculisvd porta. Proin tincidunt ligula id purus porttitor.",
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "25 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "09",
-              pictureUrl: "/Vue.js/img/projects-bedroom-01.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-01.jpg`,
               pictureAlt: "Project number 1 picture",
               projectSmallTitle: "Minimal Bedroom",
               projectTitle: "Minimal Look Bedrooms",
@@ -305,13 +340,17 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               projectDate: "26 December, 2022",
               projectStarred: true,
             },
             {
               projectid: "10",
-              pictureUrl: "/Vue.js/img/projects-bedroom-02.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-02.jpg`,
               pictureAlt: "Project number 2 picture",
               projectSmallTitle: "Minimal Bedroom",
               projectTitle: "Minimal Look Bedrooms",
@@ -321,13 +360,17 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "22 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "11",
-              pictureUrl: "/Vue.js/img/projects-bedroom-03.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-03.jpg`,
               pictureAlt: "Project number 3 picture",
               projectSmallTitle: "Minimal Bedroom",
               projectTitle: "Minimal Look Bedrooms",
@@ -337,13 +380,17 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "25 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "12",
-              pictureUrl: "/Vue.js/img/projects-bedroom-04.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-04.jpg`,
               pictureAlt: "Project number 4 picture",
               projectSmallTitle: "Classic Minimal Bedroom",
               projectTitle: "Classic Minimal Look Bedrooms",
@@ -353,30 +400,37 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "26 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "13",
-              pictureUrl: "/Vue.js/img/projects-bedroom-05.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-05.jpg`,
               pictureAlt: "Project number 5 picture",
               projectSmallTitle: "Minimal Bedroom table",
               projectTitle: "Minimal Look Bedroom Table",
-              projectText:
-              [
+              projectText: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquamsem vitae turpis dignissim maximus. Aliquam sollicitudin tellumassa, vbel maximus purus posuere in. Dojrices gravida dignissim. Praesent at nibh in mi fringilla mattis. Phasellus ut dolor odio. Aenean in the ipsum vel lectus bibendum commodo.",
                 "In nec sem suscipit, convallis leo vitae, lacinia nibh. Cras amet tellus lectus. Vivamus ipsum nunc, mattis quis nibh id, pellentesque arcu. Donec a pellentesque Cras erat enim, gravida non ante vitae,elequis convallis elit, in viverra felis. Donec ultrices tellus vitae iaculisvd porta. Proin tincidunt ligula id purus porttitor.",
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "22 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "14",
-              pictureUrl: "/Vue.js/img/projects-bedroom-06.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-06.jpg`,
               pictureAlt: "Project number 6 picture",
               projectSmallTitle: "System Table",
               projectTitle: "Minimal Look System Table",
@@ -386,44 +440,54 @@ export default new Vuex.Store({
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "25 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "15",
-              pictureUrl: "/Vue.js/img/projects-bedroom-07.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-07.jpg`,
               pictureAlt: "Project number 7 picture",
               projectSmallTitle: "Modern Bedroom",
               projectTitle: "Modern Look Bedrooms",
-              projectText:
-              [
+              projectText: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquamsem vitae turpis dignissim maximus. Aliquam sollicitudin tellumassa, vbel maximus purus posuere in. Dojrices gravida dignissim. Praesent at nibh in mi fringilla mattis. Phasellus ut dolor odio. Aenean in the ipsum vel lectus bibendum commodo.",
                 "In nec sem suscipit, convallis leo vitae, lacinia nibh. Cras amet tellus lectus. Vivamus ipsum nunc, mattis quis nibh id, pellentesque arcu. Donec a pellentesque Cras erat enim, gravida non ante vitae,elequis convallis elit, in viverra felis. Donec ultrices tellus vitae iaculisvd porta. Proin tincidunt ligula id purus porttitor.",
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "25 December, 2022",
               projectStarred: false,
             },
             {
               projectid: "16",
-              pictureUrl: "/Vue.js/img/projects-bedroom-08.jpg",
+              pictureUrl: `${process.env.BASE_URL}img/projects-bedroom-08.jpg`,
               pictureAlt: "Project number 8 picture",
               projectSmallTitle: "Modern Bedroom",
               projectTitle: "Modern Look Bedrooms",
-              projectText:
-              [
+              projectText: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquamsem vitae turpis dignissim maximus. Aliquam sollicitudin tellumassa, vbel maximus purus posuere in. Dojrices gravida dignissim. Praesent at nibh in mi fringilla mattis. Phasellus ut dolor odio. Aenean in the ipsum vel lectus bibendum commodo.",
                 "In nec sem suscipit, convallis leo vitae, lacinia nibh. Cras amet tellus lectus. Vivamus ipsum nunc, mattis quis nibh id, pellentesque arcu. Donec a pellentesque Cras erat enim, gravida non ante vitae,elequis convallis elit, in viverra felis. Donec ultrices tellus vitae iaculisvd porta. Proin tincidunt ligula id purus porttitor.",
               ],
               projectTag: "Bedroom",
               projectShowTags: ["Decor", "Architecture"],
-              projectDetailPics: ["/Vue.js/img/project-01-details-01.jpg", "/Vue.js/img/project-01-details-02.jpg", "/Vue.js/img/project-01-details-03.jpg"],
+              projectDetailPics: [
+                `${process.env.BASE_URL}img/project-01-details-01.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-02.jpg`,
+                `${process.env.BASE_URL}img/project-01-details-03.jpg`,
+              ],
               articleDate: "25 December, 2022",
               projectStarred: false,
-            }
+            },
           ],
         });
       }, 0); // TIMEMOUT was made 1000 or 2000 for homeworks purposes ))

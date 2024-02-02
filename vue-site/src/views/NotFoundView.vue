@@ -17,7 +17,7 @@
         </router-link>
       </div>
       <div class="notfound-right">
-        <img class="notfound-right-pic" src="/Vue.js/img/not-found-or-404.jpg" alt="not-found-or-404">
+        <img class="notfound-right-pic" src="/img/not-found-or-404.jpg" alt="not-found-or-404">
       </div>
     </div>
   </div>

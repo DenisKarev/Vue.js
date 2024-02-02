@@ -2,7 +2,7 @@
   <div class="home-banner">
     <section class="banner center-bg">
       <div class="banner-container">
-        <img src="/Vue.js/img/banner-home.jpg" alt="Home banner picture" class="banner-container-back-pic">
+        <img src="/img/banner-home.jpg" alt="Home banner picture" class="banner-container-back-pic">
         <div class="banner-container-content">
           <h1 class="banner-container-header">Let Your Home Be Unique</h1>
           <p class="banner-container-text">

@@ -29,10 +29,10 @@ export default {
     data() {
         return {
             images: {
-                'blog': '/Vue.js/img/banner-blog.jpg',
-                'blog-details': '/Vue.js/img/banner-blog-details.jpg',
-                'projects': '/Vue.js/img/banner-projects.jpg',
-                'project-details': '/Vue.js/img/banner-project-details.jpg',
+                'blog': `${process.env.BASE_URL}img/banner-blog.jpg`,
+                'blog-details': `${process.env.BASE_URL}img/banner-blog-details.jpg`,
+                'projects': `${process.env.BASE_URL}img/banner-projects.jpg`,
+                'project-details': `${process.env.BASE_URL}img/banner-project-details.jpg`,
              }
         }
     },
@@ -78,6 +78,9 @@ export default {
             padding: 41px 78px;
 
             background-color: white;
+            &:hover > svg > path {
+                fill: white;
+            }
         }
     }
 }

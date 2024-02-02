@@ -6,7 +6,7 @@
             <div class="blog-list-blog-latest">
                 <div class="blog-list-blog-latest-inner">
                     <div class="blog-list-blog-latest-inner-img">
-                        <img src="/Vue.js/img/blogs-latest.jpg" alt="Latest blog picture"
+                        <img src="/img/blogs-latest.jpg" alt="Latest blog picture"
                             class="blog-list-blog-latest-inner-img" />
                     </div>
                     <div class="blog-list-blog-latest-inner-description">

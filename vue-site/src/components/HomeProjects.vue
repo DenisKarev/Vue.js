@@ -16,7 +16,7 @@
     </div> -->
 
     <div class="project-project">
-      <img src="/Vue.js/img/project01.jpg" alt="Project image" class="project-project-image" />
+      <img src="/img/project01.jpg" alt="Project image" class="project-project-image" />
       <div class="project-project-description">
         <div class="container">
           <h3 class="project-project-title">Modern Kitchan</h3>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="project-project">
-      <img src="/Vue.js/img/project02.jpg" alt="Project image" class="project-project-image" />
+      <img src="/img/project02.jpg" alt="Project image" class="project-project-image" />
       <div class="project-project-description">
         <div class="container">
           <h3 class="project-project-title">Modern Kitchan</h3>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="project-project">
-      <img src="/Vue.js/img/project03.jpg" alt="Project image" class="project-project-image" />
+      <img src="/img/project03.jpg" alt="Project image" class="project-project-image" />
       <div class="project-project-description">
         <div class="container">
           <h3 class="project-project-title">Modern Kitchan</h3>
@@ -70,7 +70,7 @@
     </div>
 
     <div class="project-project">
-      <img src="/Vue.js/img/project04.jpg" alt="Project image" class="project-project-image" />
+      <img src="/img/project04.jpg" alt="Project image" class="project-project-image" />
       <div class="project-project-description">
         <div class="container">
           <h3 class="project-project-title project-project-button">Modern Kitchan</h3>
